@@ -23,6 +23,9 @@ interface EinstellungsProps {
     lightThemeFontFamily?: string,
 
     // Darktheme Props
+    darkThemeBackgroundColor: string,
+    darkThemeTextColor: string,
+    darkThemeFontFamily: string,
 }
 
 
