@@ -6,7 +6,9 @@ import DesignSettings from './components/settings/settings.tsx'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <DesignSettings />
+    <DesignSettings 
+      addTheme={{themeName: "darkBlue", backgroundColor: "#282828", textColor: "white",  font: "calibri"}} 
+    />
     <App />
   </React.StrictMode>,
 )

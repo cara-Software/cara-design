@@ -11,7 +11,12 @@ interface EinstellungsProps {
     // Props für die Themeeinstellungen
     useColorThemes?: boolean,
     activeTheme?: string,
-
+    addTheme?: {
+        themeName: string,
+        font: string,
+        backgroundColor: string,
+        textColor: string,
+    },
     // Lighttheme Props
     lightThemeBackgroundColor?: string,
     lightThemeTextColor?: string,
@@ -25,6 +30,7 @@ interface EinstellungsProps {
 const DesignSettings = (props: EinstellungsProps) => {
     if ( props.useColorThemes !=  undefined && props.activeTheme !=  undefined ) {
         // FIXME: hier wird der Code ausgeführt, wenn Color-Schemes an sind und auch verwendet werden
+
         
     } else if (props.useColorThemes != null || undefined || props.activeTheme != null|| undefined) {
         // FIXME: Code wenn nur eine Prop aktiviert ist, es wird ein Error getriggert
@@ -34,7 +40,7 @@ const DesignSettings = (props: EinstellungsProps) => {
     }
     if (props.children) {
         return (
-            <Error errorCode="settings_component_has_children" message="Du darfst einer Errorkomponent keine Children geben."/>
+            <Error errorCode="settings_component_has_children" message="Du darfst einer Settingskomponent keine Children geben."/>
         )
     }
 
