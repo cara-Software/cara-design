@@ -22,9 +22,9 @@ interface EinstellungsProps {
 
 
 // Der Provider
-const DesignEinstellungen = (props: EinstellungsProps) => {
+const DesignSettings = (props: EinstellungsProps) => {
     if ( props.useColorThemes !=  undefined && props.activeTheme !=  undefined ) {
-        // FIXME: hier wird der Code ausgeführt, wenn Color-Schemes an sind und auch verwendet 
+        // FIXME: hier wird der Code ausgeführt, wenn Color-Schemes an sind und auch verwendet werden
         
     } else if (props.useColorThemes != null || undefined || props.activeTheme != null|| undefined) {
         // FIXME: Code wenn nur eine Prop aktiviert ist, es wird ein Error getriggert
@@ -32,18 +32,21 @@ const DesignEinstellungen = (props: EinstellungsProps) => {
             <Error errorCode="theme_props_not_defined" message="Du kannst nicht ein Theme erstellen ohne Farben anzugeben oder auch ohne die Einstelung useTheme='true' zu verwenden." />
         )
     }
+    if (props.children) {
+        return (
+            <Error errorCode="settings_component_has_children" message="Du darfst einer Errorkomponent keine Children geben."/>
+        )
+    }
 
     return (
-        <div style={{ backgroundColor: props.backgroundColor }}>
-            {props.children}
-        </div>
+        <></>
     );
 }
 
 
 
 
-export default DesignEinstellungen;
+export default DesignSettings;
 
 
 
@@ -51,5 +54,5 @@ export default DesignEinstellungen;
 export const BackgroundColorGlobal = (props: EinstellungsProps) => props.backgroundColor;
 export const TextColorGlobal = (props: EinstellungsProps) => props.textColor;
 export const FontFamilyGlobal = (props: EinstellungsProps) => props.fontFamily;
-
-
+export const colorTheme = (props: EinstellungsProps) => props.useColorThemes;
+export const activeColorTheme = (props: EinstellungsProps) => props.activeTheme;

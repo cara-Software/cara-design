@@ -1,4 +1,4 @@
-import { BackgroundColorGlobal, FontFamilyGlobal } from "../einstellungen/einstellungen.tsx"
+import { BackgroundColorGlobal, FontFamilyGlobal } from "../settings/settings"
 import Error from "../../global_components/Error/Error.tsx"
 // CleanCode:
 // FIXME: Die Props, die Required sind, kommen immer als erstes, also vor den nicht required Props!

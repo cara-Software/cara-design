@@ -1,7 +1,6 @@
-import DesignEinstellungen from './components/einstellungen/einstellungen'
+import DesignEinstellungen from './components/settings/settings'
 import Button from './components/Button/Button'
 import './App.css'
-import DesignProvider from './components/einstellungen/einstellungen'
 
 
 
