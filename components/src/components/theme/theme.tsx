@@ -2,8 +2,10 @@ import { colorTheme,  } from "../settings/settings";
 
 
 
-if (localStorage == null || undefined) {
-    localStorage.setItem("colorScheme", "light")
+export const checkTheme = () => {
+    if (localStorage == null || undefined) {
+        localStorage.setItem("colorScheme", "dark")
+    }
 }
 
 export const setMode = (colorMode: string): void => {
