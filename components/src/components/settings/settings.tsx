@@ -1,7 +1,12 @@
 import { ReactNode } from "react";
 import Error from "../../global_components/Error/Error";
+
+// Props
 interface EinstellungsProps {
     // Children
+    /**
+     * Hier sind Children nicht erlaubt, gibst du welche an, so wird ein Error getriggert.
+     */
     children?: ReactNode,
     // Eigentliche Props
     backgroundColor?: string,
@@ -11,25 +16,28 @@ interface EinstellungsProps {
     // Props für die Themeeinstellungen
     useColorThemes?: boolean,
     activeTheme?: string,
-    addTheme?: {
-        themeName: string,
-        font: string,
-        backgroundColor: string,
-        textColor: string,
-    },
+    /** mehrere Themes angeben in Form von Objecten in einem Array */
+    addTheme?: [
+        {
+            themeName: string,
+            font: string,
+            backgroundColor: string,
+            textColor: string,
+        },
+    ]
     // Lighttheme Props
     lightThemeBackgroundColor?: string,
     lightThemeTextColor?: string,
     lightThemeFontFamily?: string,
 
     // Darktheme Props
-    darkThemeBackgroundColor: string,
-    darkThemeTextColor: string,
-    darkThemeFontFamily: string,
+    darkThemeBackgroundColor?: string,
+    darkThemeTextColor?: string,
+    darkThemeFontFamily?: string,
 }
 
 
-// Der Provider
+// Die Settingskomponent
 const DesignSettings = (props: EinstellungsProps) => {
     if ( props.useColorThemes !=  undefined && props.activeTheme !=  undefined ) {
         // FIXME: hier wird der Code ausgeführt, wenn Color-Schemes an sind und auch verwendet werden
@@ -52,7 +60,14 @@ const DesignSettings = (props: EinstellungsProps) => {
     );
 }
 
+if ((props: EinstellungsProps) => props.addTheme != null || undefined) {
+    // Hier werden die neuen Themes im LocalStorage regestriert
+    (props: EinstellungsProps) => props.addTheme?.forEach(value => {    
+        console.log("getriggert")
 
+        localStorage.setItem(value.themeName.toString(), JSON.stringify(value))
+    })
+}
 
 
 export default DesignSettings;
@@ -63,5 +78,8 @@ export default DesignSettings;
 export const BackgroundColorGlobal = (props: EinstellungsProps) => props.backgroundColor;
 export const TextColorGlobal = (props: EinstellungsProps) => props.textColor;
 export const FontFamilyGlobal = (props: EinstellungsProps) => props.fontFamily;
+
+// Themes exportieren
 export const colorTheme = (props: EinstellungsProps) => props.useColorThemes;
 export const activeColorTheme = (props: EinstellungsProps) => props.activeTheme;
+export const firstCustomTheme = (props: EinstellungsProps) => props.addTheme;

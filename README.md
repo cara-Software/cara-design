@@ -16,3 +16,10 @@ nicht fertig: 🟥
 |Card|🟥|
 |Membercard|🟥|
 |Designsettings|🟥|
+
+## Weitere Funktionen:
+
+Multilanguage Support: 🟥 
+Theme support: 🟥
+
+Siehe: [Theme](theme.md) und [Sprachensupport](language.md)
