@@ -10,4 +10,7 @@ Wenn irgendwo ein Error auftritt, so wird ein Screen angezeigt der den jewaligen
 
 Es ist möglich auch eigene Colorthemes zu erstellen. Dafür muss man in der [Settingskomponent](https://cara.software/cara-design/documentation/settings#Settingkomponent) ein Object unter dem Prop 'addTheme' angeben. Danach wird in diesem Object ein Name, Farben und die Font eingestellt. Auch hier kann man wieder Themespezifisch anderen Komponenten jewalige besondere Farben geben.
 
+## Automatisches einstellen von Themes nach den Einstellungen des Users:
+
+Ebenfalls ist es auch möglich den vorgegebenen Colormode des Benutzers zu benutzen. 
 ### Für eine bessere Erklärung, so schaue dich doch bitte mal in unserer Documentation um: [Documentation](https://cara.software/cara-design/documentation/)

@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import Error from "../../global_components/Error/Error";
+import { saveCustomTheme } from "../theme/theme";
 
 // Props
 interface EinstellungsProps {
@@ -15,22 +16,30 @@ interface EinstellungsProps {
     
     // Props für die Themeeinstellungen
     useColorThemes?: boolean,
-    activeTheme?: string,
+    /** Hier kann das beim ersten aufriúfen der Seite standartmäßige Theme eingestellt werden. */
+    standartTheme?: string,
+    /** Um diese Einstellung verwenden zu können, müssen alle Farben des Dark- und Lightmodes eingestellt  oder ein Customtheme angegeben sein.*/
+    useUserSettings?: boolean,
+
     /** mehrere Themes angeben in Form von Objecten in einem Array */
-    addTheme?: [
-        {
+    addTheme?: {
             themeName: string,
             font: string,
             backgroundColor: string,
             textColor: string,
-        },
-    ]
+    }[],
+
+
     // Lighttheme Props
+    /** Bei diesem Prop kann man angeben, ob man ein schon definiertes Customtheme anstelle des Lightthemes verwenden möchte. Dabei muss dieses auch nicht spezielle Farben oder ähnliches beinhalten.  */
+    useCustomLightTheme?: string,
+
     lightThemeBackgroundColor?: string,
     lightThemeTextColor?: string,
     lightThemeFontFamily?: string,
 
     // Darktheme Props
+    useCustomDarkTheme?: string,
     darkThemeBackgroundColor?: string,
     darkThemeTextColor?: string,
     darkThemeFontFamily?: string,
@@ -39,11 +48,11 @@ interface EinstellungsProps {
 
 // Die Settingskomponent
 const DesignSettings = (props: EinstellungsProps) => {
-    if ( props.useColorThemes !=  undefined && props.activeTheme !=  undefined ) {
+    if ( props.useColorThemes !=  undefined && (props.standartTheme !=  undefined || props.useUserSettings != undefined)) {
         // FIXME: hier wird der Code ausgeführt, wenn Color-Schemes an sind und auch verwendet werden
 
         
-    } else if (props.useColorThemes != null || undefined || props.activeTheme != null|| undefined) {
+    } else if ((props.useColorThemes != null || undefined) || (( props.standartTheme != null|| undefined) && (props.useUserSettings != null || undefined))) {
         // FIXME: Code wenn nur eine Prop aktiviert ist, es wird ein Error getriggert
         return (
             <Error errorCode="theme_props_not_defined" message="Du kannst nicht ein Theme erstellen ohne Farben anzugeben oder auch ohne die Einstelung useTheme='true' zu verwenden." />
@@ -62,11 +71,7 @@ const DesignSettings = (props: EinstellungsProps) => {
 
 if ((props: EinstellungsProps) => props.addTheme != null || undefined) {
     // Hier werden die neuen Themes im LocalStorage regestriert
-    (props: EinstellungsProps) => props.addTheme?.forEach(value => {    
-        console.log("getriggert")
-
-        localStorage.setItem(value.themeName.toString(), JSON.stringify(value))
-    })
+    saveCustomTheme((props: EinstellungsProps) => props.addTheme)
 }
 
 
@@ -75,11 +80,11 @@ export default DesignSettings;
 
 
 // Das exportieren der angegeben Variablen
-export const BackgroundColorGlobal = (props: EinstellungsProps) => props.backgroundColor;
-export const TextColorGlobal = (props: EinstellungsProps) => props.textColor;
-export const FontFamilyGlobal = (props: EinstellungsProps) => props.fontFamily;
+export const BackgroundColorGlobal = (props: EinstellungsProps) => props.backgroundColor || undefined;
+export const TextColorGlobal = (props: EinstellungsProps) => props.textColor || undefined;
+export const FontFamilyGlobal = (props: EinstellungsProps) => props.fontFamily || undefined;
 
 // Themes exportieren
-export const colorTheme = (props: EinstellungsProps) => props.useColorThemes;
-export const activeColorTheme = (props: EinstellungsProps) => props.activeTheme;
-export const firstCustomTheme = (props: EinstellungsProps) => props.addTheme;
+export const colorTheme = (props: EinstellungsProps) => props.useColorThemes || undefined;
+export const activeColorTheme = (props: EinstellungsProps) => props.standartTheme || undefined;
+export const firstCustomTheme = (props: EinstellungsProps) => props.addTheme || undefined;
