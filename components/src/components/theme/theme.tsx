@@ -17,7 +17,7 @@ export const setMode = (colorMode: string): void => {
 export const getTheme: string = localStorage.getItem("colorScheme")?.toString() || ""
 
 
-interface customThemeData  {
+interface customThemeData {
     themeName: string,
     font: string,
     backgroundColor: string,

@@ -70,8 +70,11 @@ const DesignSettings = (props: EinstellungsProps) => {
 }
 
 if ((props: EinstellungsProps) => props.addTheme != null || undefined) {
+    // Die Daten von dem Prop "addTheme" in eine Variable packen
+    
+
     // Hier werden die neuen Themes im LocalStorage regestriert
-    saveCustomTheme((props: EinstellungsProps) => props.addTheme)
+    saveCustomTheme(addThemeData)
 }
 
 
