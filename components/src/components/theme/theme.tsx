@@ -20,7 +20,7 @@ interface customThemeData {
     themeName: string,
     font: string,
     backgroundColor: string,
-    textColor: string,   
+    textColor: string,
 }
 
 // eigene Themes abspeichern

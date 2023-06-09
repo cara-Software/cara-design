@@ -1,4 +1,3 @@
-import DesignEinstellungen from './components/settings/settings'
 import Button from './components/Button/Button'
 import './App.css'
 import { getTheme, setMode } from './components/theme/theme'

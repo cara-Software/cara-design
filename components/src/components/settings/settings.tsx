@@ -57,6 +57,13 @@ interface EinstellungsProps {
 
 // Die Settingskomponent
 const DesignSettings = (props: EinstellungsProps) => {
+    /**Checken ob addTheme nicht leer ist und dann die Werte speichern */
+    if(props.addTheme != undefined || null) {
+        props.addTheme?.forEach(element =>{
+            localStorage.setItem(`ColorScheme${element.themeName}`, JSON.stringify(element))
+        })
+    }
+
     if ( props.useColorThemes !=  undefined && (props.standartTheme !=  undefined || props.useUserSettings != undefined)) {
         // FIXME: hier wird der Code ausgeführt, wenn Color-Schemes an sind und auch verwendet werden
 
@@ -78,18 +85,8 @@ const DesignSettings = (props: EinstellungsProps) => {
     );
 }
 
-// Ein neues Theme speichern
-interface customThemeData {
-    themeName: string,
-    font: string,
-    backgroundColor: string,
-    textColor: string,   
-}
-if ((props: EinstellungsProps) => props.addTheme != null || undefined) {
-    // FIXME: den Code zum speichern eines neuen Themes schreiben
-}
 
-
+/**Eine Komponente zum einstellen verschiedener Dinge */
 export default DesignSettings;
 
 
