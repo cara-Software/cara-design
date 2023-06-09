@@ -1,0 +1,3 @@
+## Wie funktioniert das Language System?:
+
+In der Settingskomponent kann man einstellen, mehrere Sprachen zu verwenden mit dem **useMultipleLanguages** Prop. Nun kann man bei jeder Komponent mit einem Text seinen gewünschten Text in der jewaligen Sprachen mit einem neuen Prop angeben. Es ist ebenfalls möglich dann Glogal bei den Sprachen zu switchen, dank dem Sprachen-Namen Prop. Eine neue Sprache kann man mit dem Prop addLanguages angeben. Das sieht dann wie folgt aus: addLanguages={[{name: "derName", short: "dN"}, {name: "hey", short: "hy"}]}. Hier wurden jetzt zwei Sprachen angegeben.

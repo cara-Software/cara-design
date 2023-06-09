@@ -43,6 +43,15 @@ interface EinstellungsProps {
     darkThemeBackgroundColor?: string,
     darkThemeTextColor?: string,
     darkThemeFontFamily?: string,
+
+    // multilanguage Support
+    useMultipleLanguages?: string,
+    activeLanguage?: string,
+
+    addLanguages?: {
+        name: string,
+        short: string,
+    }
 }
 
 
@@ -69,12 +78,15 @@ const DesignSettings = (props: EinstellungsProps) => {
     );
 }
 
+// Ein neues Theme speichern
+interface customThemeData {
+    themeName: string,
+    font: string,
+    backgroundColor: string,
+    textColor: string,   
+}
 if ((props: EinstellungsProps) => props.addTheme != null || undefined) {
-    // Die Daten von dem Prop "addTheme" in eine Variable packen
-    
-
-    // Hier werden die neuen Themes im LocalStorage regestriert
-    saveCustomTheme(addThemeData)
+    // FIXME: den Code zum speichern eines neuen Themes schreiben
 }
 
 

@@ -1,6 +1,5 @@
 import { colorTheme } from "../settings/settings";
 
-
 // Checkt ob hier schon der Scheme-Wert im localStorage drinne ist, wenn nicht so erstellt diese Funktion ihn
 export const checkTheme = () => {
     if (localStorage.getItem("colorScheme") == undefined || null) {
@@ -23,9 +22,11 @@ interface customThemeData {
     backgroundColor: string,
     textColor: string,   
 }
+
 // eigene Themes abspeichern
 export const saveCustomTheme = (customThemeData: Array<customThemeData>): void => {
+    console.log(customThemeData)
     customThemeData.forEach(element => {
-        localStorage.setItem(element.toString(), JSON.stringify(element))
+        localStorage.setItem(element.themeName.toString(), JSON.stringify(element))
     })
 }
