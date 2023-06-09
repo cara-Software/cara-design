@@ -1,0 +1,1 @@
+export const scroll_width: number = window.scrollY
