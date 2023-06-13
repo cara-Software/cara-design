@@ -10,7 +10,6 @@ const App = () => {
         <h2>Hey</h2>
         <p></p>
         <Button backgroundColor='#00000'  text="Hey"/>
-        
       </>
   )
 }
