@@ -15,7 +15,7 @@ function Button(props: ButtonProps) {
     if (props.backgroundColor == undefined || null || BackgroundColorGlobal == undefined || null) {
         return <Error errorCode={"Button_BackgroundColor_not_defined"} message="Du musst einen Provider einfügen und  eine Hintergrundfarbe zu Verfügung stellen oder bei dem Button eine Hintergrundfarbe einfügen. "/>
     } 
-
+    
     
     return (
         <a style={{

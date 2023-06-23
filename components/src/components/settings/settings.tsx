@@ -48,10 +48,7 @@ interface EinstellungsProps {
     useMultipleLanguages?: string,
     activeLanguage?: string,
 
-    addLanguages?: {
-        name: string,
-        short: string,
-    }
+   
 }
 
 
@@ -79,12 +76,7 @@ const DesignSettings = (props: EinstellungsProps) => {
             <Error errorCode="settings_component_has_children" message="Du darfst einer Settingskomponent keine Children geben."/>
         )
     }
-    // Checken wenn der Prop "addLanguages" ausgefüllt ist, welche das sind und diese dann im LocalStorage regestrieren
-    if (props.addLanguages != undefined || null) {
-        const name = props.addLanguages?.name.toLowerCase().charAt(0).toUpperCase();
-        const shortName = props.addLanguages?.short.toLowerCase().charAt(0).toUpperCase();
-        localStorage.setItem(`language${name}`,`${shortName}`)
-    }
+  
 
     return (
         <></>
