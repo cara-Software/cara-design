@@ -78,13 +78,10 @@ const DesignSettings = (props: EinstellungsProps) => {
     }
   
 
-    return (
-        <></>
-    );
+    return null
 }
-
-
-/**Eine Komponente zum einstellen verschiedener Dinge */
+ 
+/**Eine Komponente zum einstellen verschiedener Dinge*/
 export default DesignSettings;
 
 

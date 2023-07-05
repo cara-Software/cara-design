@@ -29,4 +29,7 @@ export const saveCustomTheme = (customThemeData: Array<customThemeData>): void =
     customThemeData.forEach(element => {
         localStorage.setItem(element.themeName.toString(), JSON.stringify(element))
     })
+
+
 }
+

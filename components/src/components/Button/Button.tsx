@@ -7,21 +7,28 @@ interface ButtonProps {
     backgroundColor?: string,
     fontFamily?: string,
     textColor?: string,
+    onPress?: () => void,
+    onHover?: void,
 }
 
 function Button(props: ButtonProps) {
-
+    let finalBackgroundColor = ""
     // Background-Color checken, da keine Farben vorgegeben werden sollen
     if (props.backgroundColor == undefined || null || BackgroundColorGlobal == undefined || null) {
         return <Error errorCode={"Button_BackgroundColor_not_defined"} message="Du musst einen Provider einfügen und  eine Hintergrundfarbe zu Verfügung stellen oder bei dem Button eine Hintergrundfarbe einfügen. "/>
-    } 
-    
+    } else if (BackgroundColorGlobal) {
+        finalBackgroundColor = BackgroundColorGlobal.toString()
+        return
+    } else {
+        finalBackgroundColor = props.backgroundColor.toString()
+    }
     
     return (
-        <a style={{
-            backgroundColor: props.backgroundColor.toString() || BackgroundColorGlobal.toString(),
+        <a onClick={props.onPress} style={{
+            backgroundColor: finalBackgroundColor,
             fontFamily: props.fontFamily || FontFamilyGlobal.toString() || "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;",
-            color: "#fff"//FIXME: später weiter machen :) 
+            color: props.textColor,
+            
         }} className="container">
             <p>{props.text}</p>
         </a>
