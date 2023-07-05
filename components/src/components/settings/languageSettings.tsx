@@ -14,7 +14,8 @@ interface Props{
     activeLanguage: string,
     /** Eine Funktion, die getriggert wird, wenn sich die Sprache verändert */
     onLanguageChange?: (param: string) => void,
-
+    /**Wenn der Browser in eine bestimmte Sprache eingestellt ist, soll eine erstellte Sprache genutzt werden*/
+    language: {german?: string, english?: string, frensh?: string, spanisch?: string, other?: string},
 }
 
 function LanguageSettings({addLanguages }: Props ) {

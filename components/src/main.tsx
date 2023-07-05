@@ -13,8 +13,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       {backgroundColor:"blue", font:"arial", textColor: "white", themeName: "darkBlue"}]}
     />
     <LanguageSettings 
-      addLanguages={[{name: "englischLOL", short: "en"}]} 
+      addLanguages={[{name: "englischLOL", short: "en"}, {name: "Deutsch", short: "de"}]} 
       activeLanguage='de'
+      language={{english: "de"}}
       onLanguageChange={(sprache) => {
         console.log(sprache.toString())
       }}
