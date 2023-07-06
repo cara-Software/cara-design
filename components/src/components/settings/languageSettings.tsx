@@ -2,12 +2,12 @@
 // - Hier wird eine Komponent erstellt, wo man danach verschiedene Sprachen einstellen kann, und diese Global verwenden
 import Error from "../../global_components/Error/Error";
 
-interface addLanguage {
+type addLanguage = {
   name: string,
   short: string
 }
 
-interface Props{
+type Props = {
     /** Füge eine oder mehrere Sprachen hinzu, diese kannst du dann später überall verwenden */
     addLanguages: addLanguage[],
     /** Hier kannst du die standartmäßige Sprache eingeben, achte darauf, dass du eine Sprache angibst, die du in dem Prop addLanguages definiert hast. */
@@ -18,13 +18,21 @@ interface Props{
     language: {german?: string, english?: string, frensh?: string, spanisch?: string, other?: string},
 }
 
-function LanguageSettings({addLanguages }: Props ) {
+function LanguageSettings({addLanguages }: Props, {language}: Props ) {
+    // regestrieren der Sprachen im local storage 
     addLanguages.forEach((obj: addLanguage)  => {
       const name = obj.name.toLowerCase()
       const shortName = obj.short.toLowerCase()
       localStorage.setItem(`language${name}`,`${shortName}`)
     })
-    
+
+    // checken ob der Navigator definiert ist
+    if (window.navigator == undefined) {
+      console.warn("navigator wasn't found!")
+    } else if (language.other == undefined) {
+      console.log("other wurde nicht angegeben")
+    }
+
     return null
 }   
 export default LanguageSettings;
