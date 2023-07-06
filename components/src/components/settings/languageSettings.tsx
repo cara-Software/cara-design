@@ -40,6 +40,7 @@ export default LanguageSettings;
 export const setLanguage = (language: string) => {
   localStorage.setItem("activeLanguage", language.toString())
 } 
+/**Eine Funktion, die einen String mit der aktuellen Sprache zurückgibt */
 export const getLanguage = () => {
   const activeLanguage = localStorage.getItem("activeLanguage")
   return activeLanguage
